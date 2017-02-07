@@ -1,0 +1,154 @@
+<?php
+session_start();
+mysql_connect("localhost","verysmart13","rasu26qofo");
+mysql_select_db("verysmart13");
+mysql_query ("set names utf8"); 
+if($_POST['maid']!=''){
+	$maid=$_POST['maid'];
+	$dt=mysql_query("select * from $maid ");
+}
+else{echo'nothing';;
+}
+?>
+
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>3c_WorkShop</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+								</header>
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h1>滑鼠</h1>
+									</header>
+
+									<span class="image main"><img src="images/pic11.jpg" alt="" /></span>
+
+<form name="searching" method="post" action="">
+請問您想要瀏覽的商品是：<br/>
+<select name="maid">
+<option value="">請選擇</option>
+<option value="LCD_Screen">顯示器</option>
+<option value="keyboard">鍵盤</option>
+<option value="mouse">滑鼠</option>
+</select>
+<input type="submit" id="button" value="確定">
+<br/>
+</form>
+<p></p>
+<table width="700" border="1">
+   <tr>
+    <td >ID</td>
+    <td >名稱</td>
+    <td >廠牌</td>
+    <td >價格</td>
+  </tr>
+  <?php
+  for($i=1;$i<=mysql_num_rows($dt);$i++){
+$rs=mysql_fetch_row($dt);
+?>
+  <tr>
+    <td><?php echo $rs[0]?></td>
+    <td><?php echo $rs[1]?></td>
+    <td><?php echo $rs[2]?></td>
+    <td><?php echo $rs[3]?></td>
+  </tr>
+  
+  <?php
+}
+?>
+</table>
+
+								<hr class="major" />
+								</section>
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Search -->
+								<section id="search" class="alt">
+									<form method="post" action="#">
+										<input type="text" name="query" id="query" placeholder="Search" />
+									</form>
+								</section>
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="new_index.html">主頁</a></li>
+										<li><a href="generic.php">篩選</a></li>
+										<li>
+											<span class="opener">瀏覽</span>
+											<ul>
+												<li><a href="Merchandise.php">電腦周邊</a></li>
+												<li><a href="DIY.php">DIY組件</a></li>
+											</ul>
+										</li>
+										<li><a href="message.php">意見交流區</a></li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>聯絡我們</h2>
+									</header>
+									<p>有哪些地方需要改進，請不吝指教，感謝您的意見。</p>
+									<ul class="contact">
+										<li class="fa-envelope-o"><a href="#">information@untitled.tld</a></li>
+										<li class="fa-phone">(02) 000-0000</li>
+										<li class="fa-home">地址<br />
+										Nashville, TN 00000-0000</li>
+									</ul>
+								</section>
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
